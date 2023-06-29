@@ -13,7 +13,6 @@ node {
         }
     }
     stage('Deploy') {
-        input message: 'Lanjutkan ke tahap Deploy?'
         checkout scm
         sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-marcellakp/sources:/src cdrx/pyinstaller-linux:python2 \'pyinstaller -F add2vals.py\''
         archiveArtifacts artifacts: 'sources/add2vals.py', followSymlinks: false
